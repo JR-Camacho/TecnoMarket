@@ -1,0 +1,13 @@
+<div class="form_container">
+    <h1 class="title">Register</h1>
+    <form action="" class="form">
+        <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="user.name">
+        <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="user.email">
+        <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="user.password">
+        <input type="button" value="Sign In" class="input btn" (click)="register()">
+    </form>
+    <div class="have">
+        <p class="text_have">Do you already have an account?</p>
+        <a routerLink="/login" class="linkHave">Go to login</a>
+    </div>
+</div>

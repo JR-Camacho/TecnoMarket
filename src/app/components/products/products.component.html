@@ -1,0 +1,31 @@
+<button class="btn btn-primary new" routerLink="/new-product">New</button>
+
+<div class="container_cards">
+  <div class="card product" *ngFor="let product of myProducts">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">{{ product.description }}</p>
+      <div class="butons">
+        <a [routerLink]="['/edit-product', product.id]" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
+        <button class="btn btn-danger" (click)="showModal(product.id)"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal window" tabindex="-1" *ngIf="modalIsShow">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Remove article</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalIsShow = false"></button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to remove this item?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalIsShow = false">Close</button>
+          <button type="button" class="btn btn-primary" (click)="deleteProduct()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

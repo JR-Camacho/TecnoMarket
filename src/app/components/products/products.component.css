@@ -1,0 +1,32 @@
+.container_cards{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.product{
+    margin: 30px;
+}
+
+.butons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.new{
+    margin: 20px 30px;
+}
+
+
+.window{
+    width: 300px;
+    position: absolute;
+    top: 120px;
+    left: 30px;
+    /* outline: none;
+    overflow: unset; */
+    display: block;
+}

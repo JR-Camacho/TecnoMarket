@@ -1,0 +1,9 @@
+<div class="form_container">
+    <h1 class="title">Edit Article</h1>
+    <form action="" class="form" *ngIf="product">
+        <input type="text" class="input" placeholder="Name" name="name" value="{{product.name}}" [(ngModel)]="product.name">
+        <input type="text" class="input" placeholder="Description" name="description" value="{{product.description}}" [(ngModel)]="product.description">
+        <input type="number" class="input" placeholder="Price" name="price"  value="{{product.price}}" [(ngModel)]="product.price">
+        <input type="button" value="Update" class="input btn" (click)="updateProduct()">
+    </form>
+</div>

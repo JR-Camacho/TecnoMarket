@@ -1,0 +1,9 @@
+<div class="form_container">
+    <h1 class="title">New Article</h1>
+    <form action="" class="form">
+        <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="product.name">
+        <input type="text" class="input" placeholder="Description" name="description" [(ngModel)]="product.description">
+        <input type="number" class="input" placeholder="Price" name="price" [(ngModel)]="product.price">
+        <input type="button" value="Save" class="input btn" (click)="setNewProduct()">
+    </form>
+</div>
