@@ -1,10 +1,19 @@
 <div class="form_container">
-    <h1 class="title">Register</h1>
+    <h1 class="display-3 text-center m-4 title">Register</h1>
     <form action="" class="form">
-        <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="user.name">
-        <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="user.email">
-        <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="user.password">
-        <input type="button" value="Sign In" class="input btn" (click)="register()">
+        <div class="row">
+            <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="user.name" (click)="isError = false">
+            <p *ngIf="errors && errors.name && isError" class="text-danger">* {{errors.name}}</p>
+        </div>
+        <div class="row">
+            <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="user.email" (click)="isError = false">
+            <p *ngIf="errors && errors.email && isError" class="text-danger">* {{errors.email}}</p>
+        </div>
+        <div class="row">
+            <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="user.password" (click)="isError = false">
+            <p *ngIf="errors && errors.password  && isError" class="text-danger">* {{errors.password}}</p>
+        </div>
+        <input type="button" value="Sign In" class="input btn btn-success" (click)="register()">
     </form>
     <div class="have">
         <p class="text_have">Do you already have an account?</p>

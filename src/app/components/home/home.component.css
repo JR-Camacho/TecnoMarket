@@ -1,3 +1,7 @@
+.title{
+    color: #273746;
+}
+
 .container_cards{
     margin-top: 30px;
     width: 100%;
@@ -6,6 +10,47 @@
     justify-content: space-evenly;
 }
 
-.product{
+.product_card{
     margin: 30px;
+    width: 40%;
+    height: 210px;   
+    display: flex;
+    border-radius: 10px;
+    /* background-color: #273746; */
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    color: #273746;
+}
+
+.front_page{
+    width: 210px;
+    height: 210px;
+    border-radius: 10px;
+}
+
+.info_actions{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info{
+    margin: 10px;
+}
+
+.title_card{
+    font-size: 1.5rem;
+}
+
+.buttons{
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   margin: 10px;
+}
+
+.picture{
+    width: 100%;
+    height: 100%;
 }

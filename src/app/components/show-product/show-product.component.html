@@ -1,0 +1,65 @@
+<div class="main_container" *ngIf="product">
+    <h1 class="display-3 text-center m-4 title">{{product.name}}</h1>
+<div class="product_container">
+    <div class="front">
+        <figure class="figure">
+            <img *ngIf="product.front_url" src="http://127.0.0.1:8000/images/products/{{product.front_url}}"
+                class="figure-img img-fluid rounded picture" alt="{{product.name}}">
+            <img *ngIf="!product.front_url" src="../assets/image-solid.svg" class="figure-img img-fluid rounded picture"
+                alt="{{product.name}}">
+            <figcaption class="figure-caption text-end">{{product.description}}</figcaption>
+        </figure>
+    </div>
+    <div class="product_info">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{product.id}}</th>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price | currency}}</td>
+                    <td>{{product.category}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h2 *ngIf="user" class="text-center display-5">Owner</h2>
+
+<div class="user_container" *ngIf="user">
+    <div class="user">
+        <h2 class="display-5 text-center user_name">{{user.name}} {{user.surnames}}</h2>
+        <div class="user_info">
+            <div class="profile">
+                <img *ngIf="user.profile_url" src="http://127.0.0.1:8000/images/users/{{ user.profile_url }}"
+                    alt="{{ user.name }}" class="user_img" />
+                <div *ngIf="!user.profile_url">
+                    <i class="fa-solid fa-user icon"></i>
+                </div>
+            </div>
+            <div class="info">
+                <div class="info_content" *ngIf="user.description != 'null' && user.description">
+                    <h4 class="display-6 text">Description</h4>
+                    <p class="fs-4 text text_description">
+                        {{ user.description }}
+                    </p>
+                </div>
+                <div class="info_content" *ngIf="user.date_birth != 'null' && user.date_birth">
+                    <h4 class="display-6 text">Date of Birth</h4>
+                    <p class="fs-5 text birth">
+                        {{ user.date_birth }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,9 +1,45 @@
 <div class="form_container">
-    <h1 class="title">Edit Article</h1>
-    <form action="" class="form" *ngIf="product">
-        <input type="text" class="input" placeholder="Name" name="name" value="{{product.name}}" [(ngModel)]="product.name">
-        <input type="text" class="input" placeholder="Description" name="description" value="{{product.description}}" [(ngModel)]="product.description">
-        <input type="number" class="input" placeholder="Price" name="price"  value="{{product.price}}" [(ngModel)]="product.price">
-        <input type="button" value="Update" class="input btn" (click)="updateProduct()">
+    <h1 class="display-3 text-center m-4 title">Edit an Item</h1>
+
+    <form class="form" *ngIf="product" enctype="multipart/form-data">
+        <div class="row">
+            <div class="column">
+                <label for="name" class="fs-5 fw-bold">Name</label>
+                <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="productForUpdate.name">
+            </div>
+            <div class="column">
+                <label for="price" class="fs-5 fw-bold">Price</label>
+                <input type="text" class="input" placeholder="Price" name="price"
+                [(ngModel)]="productForUpdate.price">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="category" class="fs-5 fw-bold">Category</label>
+                <select name="category" class="input category_input" [(ngModel)]="productForUpdate.category">
+                    <option *ngIf="!isNull" value="{{productForUpdate.category}}" selected>{{productForUpdate.category}}</option>
+                    <!-- <option *ngIf="isNull" value="" selected>Select a category</option> -->
+                    <option value="Celulares">Celulares</option>
+                    <option value="Computadoras">Computadoras</option>
+                    <option value="Memorias">Memorias</option>
+                    <option value="Perifericos">Perifericos</option>
+                    <option value="Audifonos">Audifonos</option>
+                    <option value="Bocinas">Bocinas</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="profile_url" class="fs-5 fw-bold">Profile Photo</label>
+                <input type="file" class="file_input" name="profile_url" [(ngModel)]="productForUpdate.front_url"
+                    accept=".jpg, .png, jpge" (change)="file($event)">
+            </div>
+        </div>
+        <div class="row">
+        <div class="column des_input">
+            <label for="description" class="fs-5 fw-bold">Description</label>
+            <textarea class="form-control text_area" name="description" id="description" cols="30" rows="10" [(ngModel)]="productForUpdate.description"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="input btn btn-warning" (click)="updateProduct()">Update</button>
     </form>
-</div>
+
+    

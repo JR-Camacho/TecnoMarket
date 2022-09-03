@@ -20,4 +20,8 @@ export class UserService {
   deleteUser(headers:any, id:number){
     return this.http.delete(`http://127.0.0.1:8000/api/delete-user/${id}`, {headers:headers});
   }
+
+  showUser(headers:any, id:any){
+    return this.http.get(`http://127.0.0.1:8000/api/show-user/${id}`, {headers:headers});
+  }
 }

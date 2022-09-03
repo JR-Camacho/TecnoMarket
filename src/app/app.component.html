@@ -7,24 +7,28 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/products">My Products</a>
+            <a class="nav-link active" aria-current="page" routerLink="/products">My Shop</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" (click)="getUser()">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Authentication</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" routerLink="/login" *ngIf="!loggedIn">LOGIN</a></li>
+              <div *ngIf="loggedIn && user">
+                <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="user.profile_url"><img src="http://127.0.0.1:8000/images/users/{{user.profile_url}}" alt="{{user.name}}" class="user_img"></a></li>
+              <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="!user.profile_url"><i class="fa-solid fa-user"></i></a></li>
+              </div>
               <li><a class="dropdown-item btn" (click)="logOut()"*ngIf="loggedIn">LOGOUT</a></li>
-              <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="loggedIn"><i class="fa-solid fa-user"></i></a></li>
             </ul>
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" *ngIf="location == 'http://localhost:4200/'" name="query" [(ngModel)]="query" (keyup)="getProducts()">
+          <button class="btn btn-outline-success" type="submit" *ngIf="location == 'http://localhost:4200/'" (click)="getProducts()">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" disabled *ngIf="location != 'http://localhost:4200/'">
+          <button class="btn btn-outline-success" type="submit" disabled *ngIf="location != 'http://localhost:4200/'">Search</button>
         </form>
       </div>
     </div>
   </nav>
 
   <router-outlet></router-outlet>
-

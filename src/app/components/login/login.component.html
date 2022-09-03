@@ -1,9 +1,14 @@
 <div class="form_container">
-    <h1 class="title">Log In</h1>
+    <h1 class="display-3 text-center m-4 title">Log In</h1>
     <form action="" class="form">
-        <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="user.email">
-        <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="user.password">
-        <input type="button" value="Log In" class="btn input" (click)="login()">
+        <div class="row">
+            <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="user.email" (click)="isError = false">
+        </div>
+        <div class="row">
+            <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="user.password" (click)="isError = false">
+        </div>
+        <button *ngIf="errors && errors && isError" class="btn btn-danger  input button">{{errors}}</button>
+        <input *ngIf="!isError" type="button" value="Log In" class="btn input btn-success" (click)="login()">
     </form>
     <div class="create">
         <p class="text_create">You do not have an account?</p>

@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   user:User;
   userLoged:any;
   loggedIn = false;
+  errors:any;
+  isError:boolean = false;
 
   isLogged(){
     this.auth.isLogged();
@@ -36,6 +38,11 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('id', this.userLoged[3].id);
       this.isLogged();
       this.router.navigate(['/products']);
-    },error => console.log(error));
+    },error => {
+      console.log(error)
+      this.errors = error.error.message;
+      this.isError = true;
+      console.log(this.errors)
+    });
   }
 }

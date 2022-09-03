@@ -6,9 +6,7 @@
 }
 
 .title{
-    font-size: 3rem;
-    color: crimson;
-    margin: 30px;
+    color: #273746;
 }
 
 .form{
@@ -29,11 +27,6 @@
     border-bottom: solid 1px;
 }
 
-.btn{
-    background-color: crimson;
-    color: #fff;
-}
-
 .have{
     margin-top: 20px;
     width: 50%;
@@ -41,7 +34,10 @@
     justify-content: space-between;
 }
 
-
 .linkHave{
     text-decoration: none;
+}
+
+.row{
+    width: 100%;
 }

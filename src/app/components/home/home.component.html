@@ -1,11 +1,21 @@
+<h1 class="display-3 text-center m-4 title">Items for sale</h1>
+
 <div class="container_cards">
-    <div class="card product" *ngFor="let product of products">
-      <div class="card-body">
-        <img src="http://127.0.0.1:8000/images/4322935%20(1).jpg" alt="">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">{{ product.description }}</p>
-        <a href="#" class="btn btn-primary">See more</a>
-      </div>
+<div class="product_card" *ngFor="let product of products">
+  <div class="front_page">
+    <img *ngIf="product.front_url" src="http://127.0.0.1:8000/images/products/{{product.front_url}}" class="img-fluid rounded-start picture" alt="{{product.name}}">
+    <img *ngIf="!product.front_url" src="../assets/image-solid.svg" class="img-fluid rounded-start picture" alt="{{product.name}}">
+  </div>
+  <div class="info_actions">
+    <div class="info">
+      <p class="card-title title_card">{{ product.name }}</p>
+      <p class="card-text text">{{ product.description }}</p>
+      <p class="card-text text-muted text">{{product.price | currency}}</p>
+    </div>
+    <div class="buttons">
+      <a [routerLink]="['/show-product', product.id]" class="btn btn-primary"><i class="fa-solid fa-info"></i></a>
     </div>
   </div>
+</div>
+</div>
   

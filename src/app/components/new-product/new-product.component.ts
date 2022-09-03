@@ -18,17 +18,36 @@ export class NewProductComponent implements OnInit {
     sessionStorage.getItem('token') == null? this.router.navigate(['/login']):  this.product.user_id = sessionStorage.getItem('id');
   }
 
+  photo:any;
+
+  file(event: any) {
+    this.photo = event.target.files[0];
+    console.log(this.photo);
+  }
+
   product:Product;
-  headers:any = new HttpHeaders({
-    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-  });
 
   setNewProduct(){
-    this.productS.setProduct(this.headers, this.product).subscribe(res => {
-      console.log(res);
-      this.router.navigate(['/products']);
-    },error  => console.log(error)
-    )
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
+
+    try {
+      const data = new FormData();
+      data.append('name', this.product.name);
+      data.append('description', this.product.description);
+      data.append('price', this.product.price);
+      data.append('category', this.product.category);
+      data.append('user_id', this.product.user_id);
+      if(this.photo) data.append('front_url', this.photo);
+      
+      this.productS.setProduct(headers, data).subscribe(res => {
+        console.log(res);
+        this.router.navigate(['/products']);
+      },error  => console.log(error))
+    } catch (error){
+
+    }
   }
 
 }

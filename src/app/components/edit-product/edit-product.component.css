@@ -6,18 +6,15 @@
 }
 
 .title{
-    font-size: 3rem;
-    color: crimson;
-    margin: 30px;
+    color: #273746;
 }
 
 .form{
-    width: 50%;
-    height: 300px;
+    width: 60%;
+    height: 480px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
 }
 
 .input{
@@ -25,10 +22,33 @@
     height: 40px;
     border: none;
     outline: none;
-    border-bottom: solid 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.category_input{
+    border: none;
+}
+
+.text_area{
+    width: 100%;
+    height: 100px;
+    resize: none;
 }
 
 .btn{
-    background-color: crimson;
+    border: none;
     color: #fff;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+}
+
+.column{
+    width: 50%;
+}
+
+.des_input{
+    width: 100%;
 }

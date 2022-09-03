@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  
   constructor(private userS: UserService, private router: Router) {}
 
   ngOnInit(): void {
@@ -22,6 +23,9 @@ export class UserComponent implements OnInit {
   user: any;
   userIsEdit = false;
   photoForUpdate: any;
+  modalIsShow:boolean = false;
+  errors: any;
+  isError: boolean = false;
 
   userForUpdate: User;
 
@@ -66,14 +70,23 @@ export class UserComponent implements OnInit {
       data.append('name', this.userForUpdate.name);
       data.append('surnames', this.userForUpdate.surnames);
       data.append('description', this.userForUpdate.description);
-      data.append('date_birth', this.userForUpdate.date_birth);
+      if(this.userForUpdate.date_birth){
+        data.append('date_birth', this.userForUpdate.date_birth);
+      }
       data.append('password', this.userForUpdate.password);
-      data.append('profile_url', this.photoForUpdate);
+      if(this.photoForUpdate){
+        data.append('profile_url', this.photoForUpdate);
+      }
       this.userS.updateUser(headers, data).subscribe(
         (res) => {
           console.log(res);
           this.getMyProfile();
           this.showForm();
+        },error => {
+          console.log(error)
+          this.errors = error.error.errors;
+          this.isError = true;
+          console.log(this.errors)
         }
       );
     } catch (error) {
@@ -94,30 +107,4 @@ export class UserComponent implements OnInit {
       (error) => console.log(error)
     );
   }
-
-  // show() {
-  //   const data = new FormData();
-  //   data.append('id', '1');
-  //   console.log('id' + this.user.id);
-  //   data.append('name', this.userForUpdate.name);
-  //   console.log(this.userForUpdate.name);
-  //   data.append('surnames', this.userForUpdate.surnames);
-  //   data.append('description', this.userForUpdate.description);
-  //   data.append('date_birth', this.userForUpdate.date_birth);
-  //   data.append('password', this.userForUpdate.password);
-  //   data.append('profile_url', this.photoForUpdate);
-  //   console.log(this.photoForUpdate);
-  //   console.log(data);
-  //   const headers = new HttpHeaders({
-  //     Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-  //   });
-  //   this.userS.updateUser(headers, data).subscribe(
-  //     (res) => {
-  //       console.log(res);
-  //       this.getMyProfile();
-  //       this.showForm();
-  //     },
-  //     (error) => console.log(error)
-  //   );
-  // }
 }

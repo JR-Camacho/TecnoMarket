@@ -1,59 +1,102 @@
-<h1 class="display-2 text-center m-4 user_name" *ngIf="user">{{user.name}}</h1>
+<h1 class="display-3 text-center m-4 user_name" *ngIf="user">
+    {{ userForUpdate.name }} {{ userForUpdate.surnames }}
+</h1>
+
 <div class="container_main">
+    <div class="modal window" tabindex="-1" *ngIf="modalIsShow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Acount</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="modalIsShow = false"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to remove your acount?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="modalIsShow = false">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="user_card" *ngIf="user">
         <div class="profile">
-            <div>
+            <img *ngIf="user.profile_url" src="http://127.0.0.1:8000/images/users/{{ user.profile_url }}"
+                alt="{{ user.name }}" class="user_img" />
+            <div *ngIf="!user.profile_url">
                 <i class="fa-solid fa-user icon"></i>
             </div>
         </div>
-        <p class="fst-italic fs-5 text-center user_email">{{user.email}}</p>
+        <p class="fst-italic fs-5 text-center user_email">
+            {{ user.email }} <i class="fa-solid fa-envelope"></i>
+        </p>
         <div class="info">
             <div class="user_info">
-                <p class="fw-bold fs-5 text-center text description">{{user.description}}</p>
-                <p class="fw-bold fs-5 text-center text description">{{user.date_birth}}</p>
+                <p class="fs-4 text text_description" *ngIf="user.description != 'null'">
+                    {{ userForUpdate.description }}
+                </p>
+                <p class="fs-5 text birth" *ngIf="user.date_birth != 'null' && user.date_birth">
+                    {{ userForUpdate.date_birth }}
+                </p>
             </div>
             <div class="action">
-                <button class="btn btn-warning" (click)="showForm()"><i class="fa-solid fa-user-pen"></i></button>
-                <button class="btn btn-danger" (click)="deleteUser()"><i class="fa-solid fa-user-slash"></i></button>
+                <button class="btn btn-warning" (click)="showForm()">
+                    <i class="fa-solid fa-user-pen"></i>
+                </button>
+                <button class="btn btn-danger" (click)="modalIsShow = true">
+                    <i class="fa-solid fa-user-slash"></i>
+                </button>
             </div>
         </div>
         <form class="form" *ngIf="userIsEdit" enctype="multipart/form-data" method="post">
             <div class="row">
                 <div class="column">
                     <label for="name" class="fs-5 fw-bold">Name</label>
-                    <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="userForUpdate.name">
+                    <input type="text" class="input" placeholder="Name" name="name" [(ngModel)]="userForUpdate.name" (click)="isError = false"/>
+                    <p *ngIf="errors && errors.name && isError" class="text-danger">* {{errors.name}}</p>
                 </div>
                 <div class="column">
                     <label for="surnames" class="fs-5 fw-bold">Surnames</label>
-                    <input type="text" class="input" placeholder="Surnames" name="surnames" [(ngModel)]="userForUpdate.surnames">
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <label for="description" class="fs-5 fw-bold">Description</label>
-                    <input type="text" class="input" placeholder="Description" name="description"
-                        [(ngModel)]="userForUpdate.description" autocomplete="off">
-                </div>
-                <div class="column">
-                    <label for="date_birth" class="fs-5 fw-bold">Brith</label>
-                    <input type="date" class="input" placeholder="Date of Birth" name="date_birth"
-                        [(ngModel)]="userForUpdate.date_birth">
+                    <input type="text" class="input" placeholder="Surnames" name="surnames"
+                        [(ngModel)]="userForUpdate.surnames" (click)="isError = false" />
                 </div>
             </div>
             <div class="row">
                 <div class="column">
                     <label for="name" class="fs-5 fw-bold">Password</label>
                     <input type="password" class="input" placeholder="Password" name="password"
-                        [(ngModel)]="userForUpdate.password">
+                        [(ngModel)]="userForUpdate.password" (click)="isError = false" />
+                        <p *ngIf="errors && errors.password && isError" class="text-danger">* {{errors.password}}</p>
+                </div>
+                <div class="column">
+                    <label for="date_birth" class="fs-5 fw-bold">Brith</label>
+                    <input type="date" class="input" placeholder="Date of Birth" name="date_birth"
+                        [(ngModel)]="userForUpdate.date_birth" (click)="isError = false" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="description" class="fs-5 fw-bold">Description</label>
+                    <textarea class="text_area" name="description" id="description" cols="30" rows="10"
+                        [(ngModel)]="userForUpdate.description" (click)="isError = false"></textarea>
                 </div>
                 <div class="column">
                     <label for="profile_url" class="fs-5 fw-bold">Profile Photo</label>
-                    <input type="file" class="file_input" name="profile_url"
-                        [(ngModel)]="userForUpdate.profile_url" accept=".jpg, .png, jpge" (change)="file($event)">
+                    <input type="file" class="file_input" name="profile_url" [(ngModel)]="userForUpdate.profile_url"
+                        accept=".jpg, .png, jpge" (change)="file($event)"/>
                 </div>
             </div>
-            <button type="submit" class="input btn btn-warning" (click)="updateUser()">Update</button>
-            <!-- <button class="input btn btn-warning" (click)="show()">Update</button> -->
+            <button type="submit" class="input btn btn-warning button" (click)="updateUser()">
+                Update
+            </button>
         </form>
     </div>
 </div>
