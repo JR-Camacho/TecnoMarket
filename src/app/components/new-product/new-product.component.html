@@ -1,3 +1,5 @@
+<app-basic-bar></app-basic-bar>
+
 <div class="form_container">
     <h1 class="display-3 text-center m-4 title">New Item</h1>
 
@@ -28,7 +30,7 @@
             </div>
             <div class="column">
                 <label for="profile_url" class="fs-5 fw-bold">Profile Photo</label>
-                <input type="file" class="file_input" name="profile_url" [(ngModel)]="product.front_url"
+                <input type="file" class="form-control file_input" name="profile_url" [(ngModel)]="product.front_url"
                     accept=".jpg, .png, jpge" (change)="file($event)">
             </div>
         </div>

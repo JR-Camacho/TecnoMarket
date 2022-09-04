@@ -1,3 +1,5 @@
+<app-bar-look (data)="getMessage($event)"></app-bar-look>
+
 <h1 class="display-3 text-center m-4 title">Items for sale</h1>
 
 <div class="container_cards">
@@ -9,7 +11,7 @@
   <div class="info_actions">
     <div class="info">
       <p class="card-title title_card">{{ product.name }}</p>
-      <p class="card-text text">{{ product.description }}</p>
+      <p class="card-text text text_description">{{ product.description }}</p>
       <p class="card-text text-muted text">{{product.price | currency}}</p>
     </div>
     <div class="buttons">

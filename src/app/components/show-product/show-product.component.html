@@ -1,3 +1,5 @@
+<app-basic-bar></app-basic-bar>
+
 <div class="main_container" *ngIf="product">
     <h1 class="display-3 text-center m-4 title">{{product.name}}</h1>
 <div class="product_container">
@@ -11,7 +13,7 @@
         </figure>
     </div>
     <div class="product_info">
-        <table class="table">
+        <table class="table tabla">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -47,14 +49,13 @@
             </div>
             <div class="info">
                 <div class="info_content" *ngIf="user.description != 'null' && user.description">
-                    <h4 class="display-6 text">Description</h4>
-                    <p class="fs-4 text text_description">
+                    <p class="text text_description">
                         {{ user.description }}
                     </p>
                 </div>
                 <div class="info_content" *ngIf="user.date_birth != 'null' && user.date_birth">
-                    <h4 class="display-6 text">Date of Birth</h4>
-                    <p class="fs-5 text birth">
+                    <!-- <h4 class="display-6 text">Date of Birth</h4> -->
+                    <p class="text birth">
                         {{ user.date_birth }}
                     </p>
                 </div>

@@ -16,9 +16,16 @@ export class HomeComponent implements OnInit{
   }
 
   products:any;
+  query:string = "";
+
+  getMessage(event:string){
+    this.query = event;
+    console.log(event);
+    this.getProducts();
+  }
 
     getProducts(){
-    this.productsS.getProducts().subscribe(res => {
+    this.productsS.getProducts(this.query).subscribe(res => {
       this.products = Object.values(res);
       console.log(this.products);
     })

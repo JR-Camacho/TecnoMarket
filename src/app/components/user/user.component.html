@@ -1,3 +1,5 @@
+<app-basic-bar></app-basic-bar>
+
 <h1 class="display-3 text-center m-4 user_name" *ngIf="user">
     {{ userForUpdate.name }} {{ userForUpdate.surnames }}
 </h1>
@@ -40,10 +42,10 @@
         </p>
         <div class="info">
             <div class="user_info">
-                <p class="fs-4 text text_description" *ngIf="user.description != 'null'">
+                <p class="text text_description" *ngIf="user.description != 'null'">
                     {{ userForUpdate.description }}
                 </p>
-                <p class="fs-5 text birth" *ngIf="user.date_birth != 'null' && user.date_birth">
+                <p class="text birth" *ngIf="user.date_birth != 'null' && user.date_birth">
                     {{ userForUpdate.date_birth }}
                 </p>
             </div>
@@ -90,7 +92,7 @@
                 </div>
                 <div class="column">
                     <label for="profile_url" class="fs-5 fw-bold">Profile Photo</label>
-                    <input type="file" class="file_input" name="profile_url" [(ngModel)]="userForUpdate.profile_url"
+                    <input type="file" class="form-control file_input" name="profile_url" [(ngModel)]="userForUpdate.profile_url"
                         accept=".jpg, .png, jpge" (change)="file($event)"/>
                 </div>
             </div>

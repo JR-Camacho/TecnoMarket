@@ -12,6 +12,8 @@ import { NewProductComponent } from './components/new-product/new-product.compon
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { UserComponent } from './components/user/user.component';
 import { ShowProductComponent } from './components/show-product/show-product.component';
+import { BarLookComponent } from './components/bar-look/bar-look.component';
+import { BasicBarComponent } from './components/basic-bar/basic-bar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ShowProductComponent } from './components/show-product/show-product.com
     NewProductComponent,
     EditProductComponent,
     UserComponent,
-    ShowProductComponent
+    ShowProductComponent,
+    BarLookComponent,
+    BasicBarComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,7 @@
 
 .user{
     width: 70%;
+    max-width: 990px;
     padding: 30px;
     box-shadow: 0px 0px 10px inset;
     border-radius: 20px;
@@ -46,6 +47,7 @@
 .user_info{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -59,6 +61,11 @@
     height: 200px;
     box-shadow: 0px 0px 5px inset;
     overflow: hidden;
+    margin: auto;
+}
+
+.info{
+    margin-top: 20px;
 }
 
 .user_img{
@@ -71,4 +78,92 @@
 
 .text{
     font-size: 1.6rem;
+}
+
+.text_description{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media screen and (max-width:900px) {
+    .user{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .product_container{
+        flex-direction: column;
+    }
+
+    .front{
+        width: 40%;
+    }
+
+    .product_info{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .user_name{
+        font-size: 1.5rem;
+    }
+
+    .text_description, .birth{
+        font-size: 1.2rem;
+    }
+
+    .profile{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width:330px) {
+    .tabla{
+        font-size: 0.8rem;
+    }
+
+    .user_name{
+        font-size: 1.3rem;
+    }
+
+    .profile{
+        width: 100px;
+        height: 100px;
+    }
+
+    .text_description, .birth{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .tabla{
+        font-size: 0.7rem;
+    }
+
+    .user_name{
+        font-size: 1rem;
+    }
+
+    .text_description, .birth{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width:275px) {
+    .user_name{
+        font-size: 0.8rem;
+    }
+
+    .profile{
+        width: 80px;
+        height: 80px;
+    }
+
+    .text_description, .birth{
+        font-size: 0.7rem;
+    }
 }

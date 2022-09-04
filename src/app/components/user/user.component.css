@@ -39,7 +39,6 @@
     display: flex;
     flex-direction: column;
     height: 100px;
-    /* width: 10%; */
     align-items: center;
     justify-content: space-between;
 }
@@ -59,6 +58,7 @@
 
 .text{
     color: #273746;
+    font-size: 2rem;
 }
 
 .icon{
@@ -70,7 +70,7 @@
     height: 400px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     justify-content: space-evenly;
 }
 
@@ -118,7 +118,63 @@
     position: absolute;
     top: 120px;
     left: 30px;
-    /* outline: none;
-    overflow: unset; */
     display: block;
+}
+
+@media screen and (max-width:1000px) {
+    .user_card{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .user_name{
+        font-size: 2rem;
+    }
+
+    .user_card{
+        padding: 10px;
+    }
+
+    .text{
+        font-size: 1.5rem;
+    }
+
+    .form{
+        height: auto;
+    }
+
+    .row{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column{
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .button{
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .user_name{
+        font-size: 1.5rem;
+    }
+
+    .profile{
+        width: 150px;
+        height: 150px;
+    }
+
+    .text{
+        font-size: 1rem;
+    }
+
+    .window{
+        left: 0;
+        width: 95%;
+    }
 }

@@ -1,4 +1,4 @@
-<!-- <nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand text-uppercase" routerLink="/">TecnoStore</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,15 +22,9 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" *ngIf="location == 'http://localhost:4200/'" name="query" [(ngModel)]="query" (keyup)="getProducts()">
-          <button class="btn btn-outline-success" type="submit" *ngIf="location == 'http://localhost:4200/'" (click)="getProducts()">Search</button>
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" disabled *ngIf="location != 'http://localhost:4200/'">
-          <button class="btn btn-outline-success" type="submit" disabled *ngIf="location != 'http://localhost:4200/'">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" disabled>
+          <button class="btn btn-outline-success" type="submit" disabled>Search</button>
         </form>
       </div>
     </div>
-  </nav> -->
-
-  <!-- <app-bar-look></app-bar-look> -->
-
-  <router-outlet></router-outlet>
+  </nav>
