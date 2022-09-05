@@ -23,9 +23,10 @@ export class EditProductComponent implements OnInit {
   product:any;
   photoForUpdate:any;
   productForUpdate:Product;
-
-  isNull = false;
-
+  errors: any;
+  isError: boolean;
+  isNull:boolean = false;
+  isSending:boolean = false;
 
   getProduct(){
     const headers = new HttpHeaders({
@@ -39,7 +40,7 @@ export class EditProductComponent implements OnInit {
       this.productForUpdate.price = this.product.price;
       this.productForUpdate.category = this.product.category;
 
-      if(this.product.category == null || this.product.category == 'null') this.isNull = true;
+      if(this.productForUpdate.category == null || this.productForUpdate.category == 'null') this.isNull = true;
     },
     error => console.log(error)
     )
@@ -51,6 +52,7 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct(){
+    this.isSending = true;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
@@ -60,14 +62,21 @@ export class EditProductComponent implements OnInit {
         data.append('name', this.productForUpdate.name);
         data.append('description', this.productForUpdate.description);
         data.append('price', this.productForUpdate.price);
-        data.append('category', this.productForUpdate.category);
+        if(this.product.category != null) data.append('category', this.product.category);
         if(this.photoForUpdate){
           data.append('front_url', this.photoForUpdate);
         } 
         this.productsS.updateProduct(headers, data).subscribe(res => {
+          this.isSending = false;
           console.log(res)
           this.router.navigate(['/products']);
-        },error => console.log(error))
+        },error => {
+          this.isSending = false;
+          console.log(error)
+          this.errors = error.error.errors;
+          this.isError = true;
+          console.log(this.errors);
+        })
       } catch (error) {
         console.log(error)
       }

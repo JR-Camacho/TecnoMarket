@@ -1,36 +1,37 @@
-<!-- <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand text-uppercase" routerLink="/">TecnoStore</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/products">My Shop</a>
-          </li>
-          <li class="nav-item dropdown" (click)="getUser()">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Authentication</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="/login" *ngIf="!loggedIn">LOGIN</a></li>
-              <div *ngIf="loggedIn && user">
-                <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="user.profile_url"><img src="http://127.0.0.1:8000/images/users/{{user.profile_url}}" alt="{{user.name}}" class="user_img"></a></li>
-              <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="!user.profile_url"><i class="fa-solid fa-user"></i></a></li>
-              </div>
-              <li><a class="dropdown-item btn" (click)="logOut()"*ngIf="loggedIn">LOGOUT</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" *ngIf="location == 'http://localhost:4200/'" name="query" [(ngModel)]="query" (keyup)="getProducts()">
-          <button class="btn btn-outline-success" type="submit" *ngIf="location == 'http://localhost:4200/'" (click)="getProducts()">Search</button>
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" disabled *ngIf="location != 'http://localhost:4200/'">
-          <button class="btn btn-outline-success" type="submit" disabled *ngIf="location != 'http://localhost:4200/'">Search</button>
-        </form>
+<router-outlet></router-outlet>
+
+<!-- Pie -->
+<footer>
+    <!-- Contenedor de Pie -->
+    <section class="footer__container">
+      <!-- Contenido de Pie -->
+      <article class="footer_contenido">
+        <!-- Subtitulo -->
+        <h2 class="nombre_empresa">TECNO STORE</h2>
+        <!-- Contenedor de Ubicacion y Descripcion -->
+        <div class="ubicacion_descripcion">
+          <!-- Logo -->
+          <div class="caneLogo">
+            <i class="fa-solid fa-microchip iconTS"></i>
+            <!-- <img src="../assets/images/logocane.png" alt="TheCanePhotographic" class="iCaneLogo"> -->
+          </div>
+          <!-- Descripcion -->
+          <div class="descripcion width">
+            <p class="textoDescripcion margenTexto">Technology store in Santo Domingo - Dominican Republic. Committed to technology.</p>
+          </div>
+          <!-- Ubicacion -->
+          <div>
+          <div class="ubicacion width">
+            <p class="textoUbicacion"><i class="fa-solid fa-location-pin"></i> <span class="spanUbicacion"> Santo Domingo</span></p>
+            <p class="textoUbicacion"><i class="fa-solid fa-phone"></i> <a class="link_contact" href="tel:+18093133294"> 809 313-3294</a></p>
+            <p class="textoUbicacion"><i class="fa-solid fa-envelope"></i> <a class="link_contact" href="mailto:josecamachoc0303@gmail.com"> josecamachoc0303@gmail.com</a></p>
+          </div>
+        </div>
+        <!-- Derechos de Autor -->
+        <article class="derechos">
+            <p class="textoDerechos margenTexto">© 2022 TECNO STORE. All rights reserved.</p>
+        </article>
       </div>
-    </div>
-  </nav> -->
-
-  <!-- <app-bar-look></app-bar-look> -->
-
-  <router-outlet></router-outlet>
+    </article>
+    </section>
+  </footer>

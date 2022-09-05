@@ -1,10 +1,10 @@
 export class User {
     id:any;
     name:string;
-    surnames:string;
+    surnames:any;
     email:string;
     password:any;
-    description:string;
+    description:any;
     date_birth:string;
     profile_url:any;
 

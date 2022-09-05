@@ -1,5 +1,102 @@
-.user_img{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
+/*Footer*/
+.footer__container{
+    width: 100%;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #1a1b2f;
+    color: #fff;
+  }
+  
+  .nombre_empresa{
+    margin-top: 20px;
+    font-family: 'Cormorant SC', serif;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .ubicacion_descripcion{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .width{
+    width: 300px;
+  }
+  
+  .textoDescripcion{
+    font-size: 1.2em;
+    color:#6d7993;
+    text-align: center;
+  }
+  
+  .textoUbicacion{
+    margin-bottom: 10px;
+    font-size: 1em;
+    color:#6d7993; 
+  }
+  
+  .spanUbicacion{
+    color: #fff;
+  }
+  
+  .textoDerechos{
+    color: #6d7993;
+    font-weight: 700;
+    font-size: 1em;
+  }
+  
+  /* .iCaneLogo{
+    width: 150px;
+  }
+   */
+
+   .iconTS{
+    font-size: 100px;
+   }
+
+  .margenTexto{
+    margin: 30px;
+  }
+  
+  .link_contact{
+    text-decoration: none;
+  }
+
+  /* Responsive Footer */
+  @media screen and (max-width: 560px){
+    .textoDescripcion{
+      text-align: left;
+    }
+  }
+  
+  @media screen and (max-width: 509px){
+    .width{
+      width: 100%;
+    }
+  
+    .textoDescripcion, .textoUbicacion, .textoDerechos{
+      text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 420px){
+    .nombre_empresa{
+        font-size: 1.7em;
+    }
+  }
+  
+  /* Extra barras*/
+  .flex{
+    display: flex;
+  }
+  
+  @media screen and (max-width: 600px){
+    .flex{
+      display: block;
+    }
+  }
+  

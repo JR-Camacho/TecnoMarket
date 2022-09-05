@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_height">
     <div class="container-fluid">
-      <a class="navbar-brand text-uppercase" routerLink="/">TecnoStore</a>
+      <a class="navbar-brand text-uppercase" routerLink="/"><i class="fa-solid fa-microchip iconTS"></i> TecnoStore</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,14 +10,14 @@
             <a class="nav-link active" aria-current="page" routerLink="/products">My Shop</a>
           </li>
           <li class="nav-item dropdown" (click)="getUser()">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Authentication</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="/login" *ngIf="!loggedIn">LOGIN</a></li>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acount</a>
+            <ul class="dropdown-menu bg-dark menu_auth">
+              <li><a class="dropdown-item item_auth" routerLink="/login" *ngIf="!loggedIn"><i class="fa-solid fa-user"></i> LogIn</a></li>
               <div *ngIf="loggedIn && user">
-                <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="user.profile_url"><img src="http://127.0.0.1:8000/images/users/{{user.profile_url}}" alt="{{user.name}}" class="user_img"></a></li>
-              <li><a routerLink="/my-profile" class="dropdown-item btn" *ngIf="!user.profile_url"><i class="fa-solid fa-user"></i></a></li>
+                <li><a routerLink="/my-profile" class="dropdown-item btn item_auth" *ngIf="user.profile_url"><img src="http://127.0.0.1:8000/images/users/{{user.profile_url}}" alt="{{user.name}}" class="user_img"> {{user.name}}</a></li>
+              <li><a routerLink="/my-profile" class="dropdown-item btn item_auth" *ngIf="!user.profile_url"><i class="fa-solid fa-user"></i></a></li>
               </div>
-              <li><a class="dropdown-item btn" (click)="logOut()"*ngIf="loggedIn">LOGOUT</a></li>
+              <li><a class="dropdown-item btn item_auth" (click)="logOut()"*ngIf="loggedIn"><i class="fa-solid fa-right-from-bracket"></i> LogOut</a></li>
             </ul>
           </li>
         </ul>

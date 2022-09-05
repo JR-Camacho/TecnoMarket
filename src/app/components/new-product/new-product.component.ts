@@ -19,6 +19,9 @@ export class NewProductComponent implements OnInit {
   }
 
   photo:any;
+  errors: any;
+  isError: boolean;
+  isSending:boolean = false;
 
   file(event: any) {
     this.photo = event.target.files[0];
@@ -28,6 +31,7 @@ export class NewProductComponent implements OnInit {
   product:Product;
 
   setNewProduct(){
+    this.isSending = true;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
@@ -37,14 +41,21 @@ export class NewProductComponent implements OnInit {
       data.append('name', this.product.name);
       data.append('description', this.product.description);
       data.append('price', this.product.price);
-      data.append('category', this.product.category);
+      if(this.product.category != null) data.append('category', this.product.category);
       data.append('user_id', this.product.user_id);
       if(this.photo) data.append('front_url', this.photo);
       
       this.productS.setProduct(headers, data).subscribe(res => {
+        this.isSending = false;
         console.log(res);
         this.router.navigate(['/products']);
-      },error  => console.log(error))
+      },error => {
+        this.isSending = false;
+        console.log(error)
+        this.errors = error.error.errors;
+        this.isError = true;
+        console.log(this.errors);
+      })
     } catch (error){
 
     }

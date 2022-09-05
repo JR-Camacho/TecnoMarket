@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
     // this.getImage();
   }
 
-  myProducts:any = [];
+  myProducts:any;
   modalIsShow:boolean = false;
   
   getMyProducts(){

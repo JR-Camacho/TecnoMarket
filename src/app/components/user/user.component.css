@@ -58,7 +58,7 @@
 
 .text{
     color: #273746;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .icon{
@@ -119,6 +119,11 @@
     top: 120px;
     left: 30px;
     display: block;
+}
+
+.spin{
+    width: 95%;
+    margin: auto;
 }
 
 @media screen and (max-width:1000px) {

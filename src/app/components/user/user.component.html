@@ -4,6 +4,11 @@
     {{ userForUpdate.name }} {{ userForUpdate.surnames }}
 </h1>
 
+<div *ngIf="isSending" class="d-flex align-items-center spin">
+    <strong>Loading...</strong>
+    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
 <div class="container_main">
     <div class="modal window" tabindex="-1" *ngIf="modalIsShow">
         <div class="modal-dialog">
@@ -31,10 +36,14 @@
 
     <div class="user_card" *ngIf="user">
         <div class="profile">
-            <img *ngIf="user.profile_url" src="http://127.0.0.1:8000/images/users/{{ user.profile_url }}"
+            <img *ngIf="user.profile_url && !photoForUpdate" src="http://127.0.0.1:8000/images/users/{{ user.profile_url }}"
                 alt="{{ user.name }}" class="user_img" />
-            <div *ngIf="!user.profile_url">
+            <div *ngIf="!user.profile_url && !photoForUpdate">
                 <i class="fa-solid fa-user icon"></i>
+            </div>
+            <div *ngIf="photoForUpdate">
+                <img src="{{photoForPreview}}"
+                alt="{{ user.name }}" class="user_img" />
             </div>
         </div>
         <p class="fst-italic fs-5 text-center user_email">
@@ -94,6 +103,7 @@
                     <label for="profile_url" class="fs-5 fw-bold">Profile Photo</label>
                     <input type="file" class="form-control file_input" name="profile_url" [(ngModel)]="userForUpdate.profile_url"
                         accept=".jpg, .png, jpge" (change)="file($event)"/>
+                        <p *ngIf="errors && errors.profile_url && isError" class="text-danger">* {{errors.profile_url}}</p>
                 </div>
             </div>
             <button type="submit" class="input btn btn-warning button" (click)="updateUser()">

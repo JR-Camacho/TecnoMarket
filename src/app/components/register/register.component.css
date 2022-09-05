@@ -41,3 +41,21 @@
 .row{
     width: 100%;
 }
+
+@media screen and (max-width: 700px) {
+    .form, .have{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .have{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .have{
+        font-size: 0.7rem;
+    }
+}

@@ -1,5 +1,21 @@
+.nav_height{
+    padding: 20px;
+}
+
 .user_img{
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+.item_auth{
+    color: #fff;
+}
+
+.item_auth:hover{
+    color: #000;
+}
+
+.iconTS{
+    font-size: 30px;
 }

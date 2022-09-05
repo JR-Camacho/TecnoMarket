@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  sanitizer: any;
   
   constructor(private userS: UserService, private router: Router) {}
 
@@ -22,10 +24,12 @@ export class UserComponent implements OnInit {
 
   user: any;
   userIsEdit = false;
-  photoForUpdate: any;
+  photoForUpdate:any;
+  photoForPreview:any;
   modalIsShow:boolean = false;
   errors: any;
   isError: boolean = false;
+  isSending:boolean = false;
 
   userForUpdate: User;
 
@@ -58,9 +62,26 @@ export class UserComponent implements OnInit {
   file(event: any) {
     this.photoForUpdate = event.target.files[0];
     console.log(this.photoForUpdate);
+    this.getBase64(this.photoForUpdate);
+  }
+
+  getBase64(image:any){
+    try {
+      let imagen = image;
+      console.log(imagen);
+      let reader = new FileReader();
+      reader.readAsDataURL(imagen);
+      reader.onloadend = () => {
+        console.log(reader.result);
+        this.photoForPreview = reader.result;
+      } 
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   updateUser() {
+    this.isSending = true;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${sessionStorage.getItem('token')}`,
     });
@@ -68,22 +89,21 @@ export class UserComponent implements OnInit {
       const data = new FormData();
       data.append('id', this.userForUpdate.id);
       data.append('name', this.userForUpdate.name);
-      data.append('surnames', this.userForUpdate.surnames);
-      data.append('description', this.userForUpdate.description);
-      if(this.userForUpdate.date_birth){
-        data.append('date_birth', this.userForUpdate.date_birth);
-      }
+      if(this.userForUpdate.surnames != null) data.append('surnames', this.userForUpdate.surnames);
+      if(this.userForUpdate.description != null) data.append('description', this.userForUpdate.description);
+      if(this.userForUpdate.date_birth) data.append('date_birth', this.userForUpdate.date_birth);
       data.append('password', this.userForUpdate.password);
-      if(this.photoForUpdate){
-        data.append('profile_url', this.photoForUpdate);
-      }
+      if(this.photoForUpdate) data.append('profile_url', this.photoForUpdate);
+
       this.userS.updateUser(headers, data).subscribe(
         (res) => {
           console.log(res);
           this.getMyProfile();
+          this.isSending = false;
           this.showForm();
         },error => {
           console.log(error)
+          this.isSending = false;
           this.errors = error.error.errors;
           this.isError = true;
           console.log(this.errors)
