@@ -14,6 +14,7 @@ import { UserComponent } from './components/user/user.component';
 import { ShowProductComponent } from './components/show-product/show-product.component';
 import { BarLookComponent } from './components/bar-look/bar-look.component';
 import { BasicBarComponent } from './components/basic-bar/basic-bar.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { BasicBarComponent } from './components/basic-bar/basic-bar.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ { provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
