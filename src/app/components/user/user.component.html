@@ -36,7 +36,7 @@
 
     <div class="user_card" *ngIf="user">
         <div class="profile">
-            <img *ngIf="user.profile_url && !photoForUpdate" src="http://127.0.0.1:8000/images/users/{{ user.profile_url }}"
+            <img *ngIf="user.profile_url && !photoForUpdate" src="{{ user.profile_url }}"
                 alt="{{ user.name }}" class="user_img" />
             <div *ngIf="!user.profile_url && !photoForUpdate">
                 <i class="fa-solid fa-user icon"></i>

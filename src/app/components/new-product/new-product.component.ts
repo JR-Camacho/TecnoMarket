@@ -44,7 +44,6 @@ export class NewProductComponent implements OnInit {
       if(this.product.category != null) data.append('category', this.product.category);
       data.append('user_id', this.product.user_id);
       if(this.photo) data.append('front_url', this.photo);
-      
       this.productS.setProduct(headers, data).subscribe(res => {
         this.isSending = false;
         console.log(res);

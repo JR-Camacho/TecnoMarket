@@ -5,7 +5,7 @@
 <div class="product_container">
     <div class="front">
         <figure class="figure">
-            <img *ngIf="product.front_url" src="http://127.0.0.1:8000/images/products/{{product.front_url}}"
+            <img *ngIf="product.front_url" src="{{product.front_url}}"
                 class="figure-img img-fluid rounded picture" alt="{{product.name}}">
             <img *ngIf="!product.front_url" src="../assets/image-solid.svg" class="figure-img img-fluid rounded picture"
                 alt="{{product.name}}">
@@ -41,7 +41,7 @@
         <h2 class="display-5 text-center user_name">{{user.name}} {{user.surnames}}</h2>
         <div class="user_info">
             <div class="profile">
-                <img *ngIf="user.profile_url" src="http://127.0.0.1:8000/images/users/{{ user.profile_url }}"
+                <img *ngIf="user.profile_url" src="{{ user.profile_url }}"
                     alt="{{ user.name }}" class="user_img" />
                 <div *ngIf="!user.profile_url">
                     <i class="fa-solid fa-user icon"></i>
@@ -54,7 +54,6 @@
                     </p>
                 </div>
                 <div class="info_content" *ngIf="user.date_birth != 'null' && user.date_birth">
-                    <!-- <h4 class="display-6 text">Date of Birth</h4> -->
                     <p class="text birth">
                         {{ user.date_birth }}
                     </p>

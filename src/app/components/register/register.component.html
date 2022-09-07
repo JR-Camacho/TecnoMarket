@@ -15,7 +15,7 @@
             <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="user.password" (click)="isError = false">
             <p *ngIf="errors && errors.password  && isError" class="text-danger">* {{errors.password}}</p>
         </div>
-        <input type="button" value="Sign In" class="input btn btn-success" (click)="register()">
+        <input type="button" value="Sign Up" class="input btn btn-success" (click)="register()">
     </form>
     <div class="have">
         <p class="text_have">Do you already have an account?</p>

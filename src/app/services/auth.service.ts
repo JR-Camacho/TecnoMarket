@@ -10,15 +10,15 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   register(user:User){
-    return this.http.post('http://127.0.0.1:8000/api/register', user);
+    return this.http.post('https://apitecnostore.herokuapp.com/api/register', user);
   }
 
   login(user:User){
-    return this.http.post('http://127.0.0.1:8000/api/login', user);
+    return this.http.post('https://apitecnostore.herokuapp.com/api/login', user);
   }
 
   logout(header:any){
-    return this.http.get('http://127.0.0.1:8000/api/logout', {headers:header});
+    return this.http.get('https://apitecnostore.herokuapp.com/api/logout', {headers:header});
   }
 
   loggedIn:boolean;

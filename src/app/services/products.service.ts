@@ -11,30 +11,30 @@ export class ProductsService {
 
 
   getProducts(query:string = ''){
-    return this.http.get('http://127.0.0.1:8000/api/products', {params: {buscar:query}});
+    return this.http.get('https://apitecnostore.herokuapp.com/api/products', {params: {buscar:query}});
   }
 
   getMyProducts(headers:any, id:any){
-    return this.http.get(`http://127.0.0.1:8000/api/myproducts/${id}`, {headers:headers});
+    return this.http.get(`https://apitecnostore.herokuapp.com/api/myproducts/${id}`, {headers:headers});
   }
 
   getProduct(headers:any, id:any){
-    return this.http.get(`http://127.0.0.1:8000/api/edit/${id}`, {headers:headers});
+    return this.http.get(`https://apitecnostore.herokuapp.com/api/edit/${id}`, {headers:headers});
   }
 
   setProduct(headers:any, product:FormData){
-    return this.http.post(`http://127.0.0.1:8000/api/create`, product, {headers:headers})
+    return this.http.post(`https://apitecnostore.herokuapp.com/api/create`, product, {headers:headers})
   }
 
   updateProduct(headers:any, product:FormData){
-    return this.http.post(`http://127.0.0.1:8000/api/update`, product, {headers:headers})
+    return this.http.post(`https://apitecnostore.herokuapp.com/api/update`, product, {headers:headers})
   }
 
   deleteProduct(headers:any, id:any){
-    return this.http.delete(`http://127.0.0.1:8000/api/delete/${id}`, {headers:headers});
+    return this.http.delete(`https://apitecnostore.herokuapp.com/api/delete/${id}`, {headers:headers});
   }
 
   showProduct(headers:any, id:any){
-    return this.http.get(`http://127.0.0.1:8000/api/show-product/${id}`, {headers:headers});
+    return this.http.get(`https://apitecnostore.herokuapp.com/api/show-product/${id}`, {headers:headers});
   }
 }

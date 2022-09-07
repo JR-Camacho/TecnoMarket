@@ -10,18 +10,18 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   getUser(headers:any){
-    return this.http.get(`http://127.0.0.1:8000/api/user`, {headers:headers});
+    return this.http.get(`https://apitecnostore.herokuapp.com/api/user`, {headers:headers});
   }
 
   updateUser(headers:any, user:FormData){
-    return this.http.post(`http://127.0.0.1:8000/api/update-user`, user, {headers:headers});
+    return this.http.post(`https://apitecnostore.herokuapp.com/api/update-user`, user, {headers:headers});
   }
 
   deleteUser(headers:any, id:number){
-    return this.http.delete(`http://127.0.0.1:8000/api/delete-user/${id}`, {headers:headers});
+    return this.http.delete(`https://apitecnostore.herokuapp.com/api/delete-user/${id}`, {headers:headers});
   }
 
   showUser(headers:any, id:any){
-    return this.http.get(`http://127.0.0.1:8000/api/show-user/${id}`, {headers:headers});
+    return this.http.get(`https://apitecnostore.herokuapp.com/api/show-user/${id}`, {headers:headers});
   }
 }

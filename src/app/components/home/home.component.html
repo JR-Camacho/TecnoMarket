@@ -18,7 +18,7 @@
 <div class="container_cards" *ngIf="products">  
 <div class="product_card" *ngFor="let product of products">
   <div class="front_page">
-    <img *ngIf="product.front_url" src="http://127.0.0.1:8000/images/products/{{product.front_url}}" class="img-fluid rounded-start picture" alt="{{product.name}}">
+    <img *ngIf="product.front_url" src="{{product.front_url}}" class="img-fluid rounded-start picture" alt="{{product.name}}">
     <img *ngIf="!product.front_url" src="../assets/sinimagen.jpg" class="img-fluid rounded-start picture" alt="{{product.name}}">
   </div>
   <div class="info_actions">
